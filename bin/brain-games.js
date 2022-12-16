@@ -1,3 +1,3 @@
 #!/usr/bin/env node
-console.log("Welcome to the Brain Games!");
-
+import {nameQuetion} from '../src/cli.js';
+nameQuetion();
