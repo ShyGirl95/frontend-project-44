@@ -20,7 +20,7 @@ const gameEven = (something) => {
     if (rightAnswer !== userAnswer) {
       i = 3;
       console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${rightAnswer}".`)
-      console.log(`Let's try again, ${name}!`)
+      return console.log(`Let's try again, ${name}!`)
     } else if (rightAnswer === userAnswer) {
       console.log('Correct!')
     }
