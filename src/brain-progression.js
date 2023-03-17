@@ -8,31 +8,31 @@ const gameProgress = () => {
   console.log('What number is missing in the progression?');
   let question = "Question: ";
   for (let i = 0; i < 3; i += 1) {
-    const fillipWasIncel = Math.floor(Math.random()*100);
-    const randomNumber = random(1,10);
-    let nonActiveProgressive = progressive(fillipWasIncel, randomNumber);
-    const rightAnwserIndex = nonActiveProgressive[randomNumber];
-    const rightAnwser = rightAnwserIndex;
-    nonActiveProgressive[randomNumber] = '..';
-    console.log(`${question}${nonActiveProgressive}`);
+    const [rightAnswer, result] = progressive();
+    console.log(`${question}${result}`);
     const yourAnwser = readlineSync.question('Your anwser: ');
-    if (yourAnwser === String(rightAnwser)) {
+    if (yourAnwser === String(rightAnswer)) {
       console.log('Correct!');
     } else {
-      console.log(`'${yourAnwser}' is wrong answer ;(. Correct answer was '${rightAnwser}'.`);
+      console.log(`'${yourAnwser}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
       return console.log(`Let's try again, ${name}!`);
     }
   }
   console.log(`Congratulations, ${name}!`);
 }
 
-const progressive = (number, value) => {
+const progressive = () => {
+  let randomStartNumber = random(1,99);
+  const randomDiff = random(1,10);
   const result = [];
   for (let x = 0; x < 10; x += 1) {
-    result.push(number);
-    number += value;
+    result.push(randomStartNumber);
+    randomStartNumber += randomDiff;
   }
-  return result;
+  const rightAnwser = result[randomDiff];
+  const rightAnwserIndex = result.indexOf(rightAnwser);
+  result[rightAnwserIndex] = '..';
+  return [rightAnwser, result.join(' ')];
 }
 
 const random = (min, max) => {
