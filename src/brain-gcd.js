@@ -1,4 +1,5 @@
 import readlineSync from 'readline-sync';
+import randomNumber from './random.js';
 
 function nod(x, y) {
   if (y > x) {
@@ -11,14 +12,15 @@ function nod(x, y) {
 }
 
 const gameNOD = () => {
+  const roundsToWin = 3;
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
   console.log('Find the greatest common divisor of given numbers.');
   const question = 'Question: ';
-  for (let i = 0; i < 3; i += 1) {
-    const a = Math.floor(Math.random() * 100);
-    const b = Math.floor(Math.random() * 100);
+  for (let i = 0; i < roundsToWin; i += 1) {
+    const a = randomNumber();
+    const b = randomNumber();
     const rightAnswer = (nod(a, b));
     console.log(`${question}${a} ${b}`);
     const yourAnwser = readlineSync.question('Your anwser: ');
@@ -31,6 +33,7 @@ const gameNOD = () => {
     }
   }
   console.log(`Congratulations, ${name}!`);
+  // return is required for eslint
   return 0;
 };
 

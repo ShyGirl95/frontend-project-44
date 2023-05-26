@@ -17,12 +17,13 @@ const progressive = () => {
 };
 
 const gameProgress = () => {
+  const roundsToWin = 3;
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
   console.log('What number is missing in the progression?');
   const question = 'Question: ';
-  for (let i = 0; i < 3; i += 1) {
+  for (let i = 0; i < roundsToWin; i += 1) {
     const [rightAnswer, result] = progressive();
     console.log(`${question}${result}`);
     const yourAnwser = readlineSync.question('Your anwser: ');
@@ -34,6 +35,7 @@ const gameProgress = () => {
     }
   }
   console.log(`Congratulations, ${name}!`);
+  // return is required for eslint
   return 0;
 };
 
